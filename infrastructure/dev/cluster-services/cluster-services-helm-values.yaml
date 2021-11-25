@@ -1,0 +1,11 @@
+autoscaler:
+  cluster_name: epm-msrv-cluster-dev
+
+k8s_spot_termination_handler:
+  enabled: true
+
+externaldns:
+  enabled: false
+
+dashboard:
+  tag: v2.4.0

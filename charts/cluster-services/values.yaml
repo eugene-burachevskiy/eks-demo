@@ -1,0 +1,65 @@
+global:
+  namespace: kube-system
+  labels: {}
+
+autoscaler:
+  cluster_name: epm-msrv-cluster-XXX
+  replicas: 1
+  image: eu.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler
+  tag: v1.21.1
+  pullpolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: 300Mi
+  nodeselector: {}
+  tolerations: []
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: "app"
+              operator: In
+              values:
+              - "cluster-autoscaler"
+          topologyKey: "kubernetes.io/hostname"
+  prometheus:
+    servicemonitor_enabled: false
+    prom_name: kube-prometheus
+    release_name: monitoring
+
+# see https://github.com/helm/charts/tree/master/stable/k8s-spot-termination-handler for values examples
+k8s_spot_termination_handler:
+  enabled: true
+
+externaldns:
+  enabled: true
+  provider: aws
+  aws:
+    region: us-east-2
+    zoneType: public
+  domainFilters:
+    - some-domain-here.com
+  txtOwnerId: '/hostedzone/Z1OGF03FRUZTWV'
+  sources:
+    - service
+    - ingress
+    - istio-gateway
+  nodeselector: {}
+  tolerations: []
+
+dashboard:
+  replicas: 1
+  tag: v2.0.0
+  pullpolicy: IfNotPresent
+  service:
+    port: 80
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  nodeselector: {}
+  tolerations: []

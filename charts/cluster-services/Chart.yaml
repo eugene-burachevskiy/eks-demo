@@ -1,0 +1,15 @@
+apiVersion: v2
+name: cluster-services
+version: 0.1.0
+
+type: application
+
+description: "Chart-wrapper for k8s cluster core appplications (autoscaler, dashboard, external-dns, spot-term-handler)"
+
+dependencies:
+  - name: externaldns
+    version: 3.0.1
+    condition: externaldns.enabled
+  - name: k8s-spot-termination-handler
+    version: 1.4.8
+    condition: k8s_spot_termination_handler.enabled
