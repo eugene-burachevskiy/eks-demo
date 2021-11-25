@@ -1,7 +1,8 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "3.11.0"
 
-  name = "epm-msrv-dev"
+  name = "eks-demo-dev"
 
   cidr = "10.100.0.0/16"
 
@@ -18,10 +19,10 @@ module "vpc" {
 
 
   tags = {
-    Project     = "EPM-MSRV"
+    Project     = "DEMO"
   }
 
   vpc_tags = {
-    Name = "epm-msrv-dev"
+    Name = "eks-demo-dev"
   }
 }
