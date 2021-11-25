@@ -1,7 +1,7 @@
 variable "awscli_profile" {
   description = "Name of your ~/.aws/credentials profile"
   type        = string
-  default     = "msrv"
+  default     = "default"
 }
 
 //////////////// EKS MODULE CLUSTER VARS
@@ -9,7 +9,7 @@ variable "awscli_profile" {
 variable "cluster_name" {
   description = "K8S cluster name"
   type        = string
-  default     = "epm-msrv-cluster-dev"
+  default     = "demo-eks-cluster-dev"
 }
 
 variable "kubernetes_version" {
@@ -100,7 +100,7 @@ variable "update_kubeconfig" {
 }
 variable "worker_ssh_key" {
   type        = string
-  default     = "eugene_burachevskiy@epam.com"
+  default     = "eugene_burachevskiy@company.com"
   description = "ssh public key name for workers"
 }
 
@@ -194,8 +194,8 @@ variable "map_users" {
 
   default = [
     {
-      userarn  = "arn:aws:iam::390133181240:user/eugene_burachevskiy@epam.com"
-      username = "eugene_burachevskiy@epam.com"
+      userarn  = "arn:aws:iam::ACC_NUMBER:user/eugene_burachevskiy@company.com"
+      username = "eugene_burachevskiy@company.com"
       groups   = ["system:masters"]
     }
   ]

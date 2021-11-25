@@ -12,8 +12,8 @@ provider "kubernetes" {
 terraform {
     backend "s3" {
     encrypt        = false
-    profile        = "msrv"
-    bucket         = "epm-msrv-tf"
+    profile        = "default"
+    bucket         = "tfstate-bucket"
     region         = "us-east-2"
     key            = "dev/eks/terraform.tfstate"
     }
