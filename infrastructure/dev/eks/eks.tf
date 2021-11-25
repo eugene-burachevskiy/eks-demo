@@ -59,7 +59,6 @@ module "eks" {
   worker_ami_name_filter = local.eks_worker_ami_name_filter
   enable_irsa = false
 
-  //Use worker_groups_launch_template for spot autoscaling groups.
   worker_groups = [ 
     {
       name                    = "workloads-spot"
