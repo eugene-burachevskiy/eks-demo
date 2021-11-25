@@ -1,3 +1,3 @@
 # Charts
 
-Helm charts for MSRV project
+Helm charts for EKS demo
