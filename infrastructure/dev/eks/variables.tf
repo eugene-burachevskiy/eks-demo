@@ -44,13 +44,13 @@ variable "cluster_iam_role" {
 }
 
 variable "cluster_auto_iam" {
-  description = "Automatically create cluster Security Group"
+  description = "Automatically create cluster IAM role"
   type        = bool
   default     = true
 }
 
 variable "worker_auto_iam" {
-  description = "Automatically create worker Security Group"
+  description = "Automatically create worker IAM role"
   type        = bool
   default     = true
 }
